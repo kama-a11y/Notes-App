@@ -10,7 +10,9 @@ class NotesView extends StatelessWidget {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          showModalBottomSheet(context: context,
+          showModalBottomSheet(
+            context: context,
+            isScrollControlled:true,
            builder: (context){
             return AddNoteBottomSheet();
            });

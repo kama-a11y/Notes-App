@@ -1,11 +1,17 @@
-
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:notes_app/utils/app_constant.dart';
 
 class CustomButton extends StatelessWidget {
-  const CustomButton({super.key, required this.text, required this.ontap});
-final String text;
-final Function() ontap;
+  const CustomButton({
+    super.key,
+    required this.text,
+    required this.ontap,
+    this.isLoading = false,
+  });
+  final String text;
+  final Function() ontap;
+  final bool isLoading;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -15,9 +21,20 @@ final Function() ontap;
         height: 60,
         decoration: BoxDecoration(
           color: AppConstant.primaryColor,
-          borderRadius: BorderRadius.circular(16)
+          borderRadius: BorderRadius.circular(16),
         ),
-        child: Center(child: Text(text,style: TextStyle(color: Colors.black,fontSize: 22,fontWeight: FontWeight.bold),)),
+        child: Center(
+          child:isLoading ? 
+          CupertinoActivityIndicator(color: Colors.black,)
+           : Text(
+            text,
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 22,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
       ),
     );
   }
